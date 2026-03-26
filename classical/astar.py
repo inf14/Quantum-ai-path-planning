@@ -1,9 +1,17 @@
 import numpy as np
 import heapq
+import random
+import json
 
 GRID_SIZE = 15
+OBSTACLE_PROB = 0.25
+NUM_RUNS = 30
+
 START = (0, 0)
 GOAL = (GRID_SIZE-1, GRID_SIZE-1)
+
+random.seed(3)
+np.random.seed(3)
 
 def heuristic(a, b):
     return abs(a[0] - b[0]) + abs(a[1] - b[1])
@@ -22,9 +30,11 @@ def a_star(grid, start, goal):
 
     came_from = {}
     g = {start: 0}
+    explored = []
 
     while open_set:
         _, current = heapq.heappop(open_set)
+        explored.append(current)
 
         if current == goal:
             break
@@ -46,4 +56,36 @@ def a_star(grid, start, goal):
         path.append(start)
         path.reverse()
 
-    return path
+    return path, explored
+
+
+# Experiment Loop
+logs = []
+
+for run in range(NUM_RUNS):
+    grid = np.zeros((GRID_SIZE, GRID_SIZE))
+
+    for i in range(GRID_SIZE):
+        for j in range(GRID_SIZE):
+            if random.random() < OBSTACLE_PROB:
+                grid[i, j] = 1
+
+    grid[START] = 0
+    grid[GOAL] = 0
+
+    path, explored = a_star(grid, START, GOAL)
+
+    log_entry = {
+        "run_id": run,
+        "success": bool(path),
+        "path_length": len(path)-1 if path else None,
+        "explored_nodes": len(explored)
+    }
+
+    logs.append(log_entry)
+
+with open("astar_logs.json", "w") as f:
+    json.dump(logs, f, indent=2)
+
+print("Experiment completed")
+print("Successful runs:", sum(l["success"] for l in logs))
