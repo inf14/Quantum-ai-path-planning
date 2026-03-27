@@ -1,67 +1,86 @@
-# Grid-Based Path Planning using A* Algorithm (Classical Approach)
+# Hybrid Classical–Quantum Path Planning System
 
 ## 📌 Project Overview
-This project focuses on solving a grid-based path planning problem using the classical A* (A-star) algorithm.
+This project presents a grid-based path planning system that combines **classical algorithms** and **quantum-inspired techniques**.
 
-The environment consists of a 2D grid with randomly placed obstacles, where the objective is to find the shortest path from a start point to a goal point.
+The system operates in a 2D grid environment with obstacles and aims to find a path from a start point to a goal point. It compares a deterministic classical approach (A*) with a probabilistic quantum-inspired method.
 
-This is the first phase of a larger system that will later integrate quantum-inspired optimization and AI-based explanation modules.
+This project is part of a larger system that will later include AI-based explanation modules and containerized deployment.
 
 ---
 
 ## 🎯 Objectives
-- To understand and implement the A* path planning algorithm
-- To simulate a grid-based environment with obstacles
-- To evaluate algorithm performance using multiple runs
-- To visualize path planning and explored nodes
+- To implement classical path planning using the A* algorithm  
+- To explore quantum-inspired decision-making using simple quantum circuits  
+- To compare deterministic and probabilistic approaches  
+- To visualize and analyze path planning behavior  
 
 ---
 
-## 🧠 A* Algorithm Overview
+## 🧠 Classical Approach (A*)
 
-A* is a best-first search algorithm that finds the shortest path using:
+The A* algorithm is used as the baseline path planning method.
 
-- **g(n):** Cost from start node to current node  
-- **h(n):** Heuristic estimate (Manhattan distance)  
+### Key Concepts:
+- **g(n):** Cost from start node  
+- **h(n):** Heuristic (Manhattan distance)  
 - **f(n) = g(n) + h(n)**  
 
-The algorithm always selects the node with the lowest f(n), ensuring optimal pathfinding when a solution exists.
+### Features:
+- Guaranteed shortest path (if exists)  
+- Efficient exploration using heuristic  
+- Tracks explored nodes and path  
 
 ---
 
-## ⚙️ Features Implemented
+## ⚛️ Quantum-Inspired Approach
 
-- Grid-based environment (size configurable)
-- Random obstacle generation
-- A* shortest path planning
-- Tracking explored nodes
-- Multiple experiment runs
-- JSON-based logging of results
-- Visualization of path and search process
+This module introduces a probabilistic method using a **Grover-inspired quantum circuit**.
+
+### Key Idea:
+- Classical logic determines best possible moves  
+- If multiple optimal moves exist → quantum circuit selects one  
+
+### Characteristics:
+- Probabilistic decision-making  
+- No guarantee of optimal path  
+- Can behave differently across runs  
+
+---
+
+## ⚖️ Classical vs Quantum Comparison
+
+| Feature | A* | Quantum |
+|--------|----|--------|
+| Type | Deterministic | Probabilistic |
+| Path Optimality | Guaranteed | Not guaranteed |
+| Decision Making | Global | Local |
+| Reliability | High | Lower |
 
 ---
 
 ## 📊 Experimentation
 
-The algorithm is executed over multiple runs with different obstacle configurations.
+Both approaches are tested across multiple runs with random obstacle configurations.
 
 ### Metrics Collected:
-- Success rate (whether path was found)
-- Path length (number of steps)
-- Number of explored nodes
+- Success rate  
+- Path length  
+- Number of explored nodes  
 
-Logs are stored in:  
-`astar_logs.json`
+Logs are generated as JSON files:
+- `astar_logs.json`  
+- `quantum_path_logs.json`  
 
 ---
 
 ## 📈 Visualization
 
-The output includes a graphical representation of:
+The system provides graphical output showing:
 
 - Black cells → Obstacles  
 - Light blue cells → Explored nodes  
-- Red line → Final path  
+- Path → Final route  
 - S → Start  
 - G → Goal  
 
@@ -70,37 +89,48 @@ The output includes a graphical representation of:
 ## 📁 Project Structure
 
     classical/
-        astar.py        # A* implementation with experiments and visualization
+        astar.py
+
+    quantum/
+        quantum_path.py
 
 ---
 
 ## ▶️ How to Run
 
-    pip install numpy matplotlib
+Install dependencies:
+
+    pip install numpy matplotlib qiskit qiskit-aer
+
+Run A*:
+
     python classical/astar.py
 
----
+Run Quantum:
 
-## 📌 Current Status
-
-- ✅ Classical A* path planning implemented  
-- ⬜ Quantum-inspired optimization (upcoming)  
-- ⬜ LLM-based explanation module (planned)  
-- ⬜ Docker containerization (planned)  
+    python quantum/quantum_path.py
 
 ---
 
 ## 🚀 Future Work
 
-- Integrate quantum-inspired decision module using Qiskit  
-- Compare classical vs quantum approaches  
-- Add AI-based explanation of results  
-- Containerize the system using Docker  
+- Integrate LLM-based explanation module  
+- Add comparison visualizations (graphs, metrics)  
+- Implement Docker containerization  
+- Extend quantum logic for improved decision-making  
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💻 Authors
 
-Anant Jain
-Viplav Kumar
-Ehsaas Bhalla
+Anant Jain  
+Viplav Kumar  
+Ehsaas Bhalla  
+
+---
+
+## 📧 Contact
+
+For any queries or collaboration:
+
+anant.inf.12.28@gmail.com
