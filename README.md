@@ -1,140 +1,232 @@
-# Hybrid Classical–Quantum Path Planning System
+# 🚀 Hybrid Classical–Quantum Path Planning System
 
-## 📌 Project Overview
-This project presents a grid-based path planning system that combines **classical algorithms** and **quantum-inspired techniques**.
+## 📌 Overview
 
-The system operates in a 2D grid environment with obstacles and aims to find a path from a start point to a goal point. It compares a deterministic classical approach (A*) with a probabilistic quantum-inspired method.
+This project implements a **Hybrid AI Path Planning System** that combines:
 
-This project is part of a larger system that will later include AI-based explanation modules and containerized deployment.
+* 🧠 Classical algorithm (**A***)
+* ⚛️ Quantum-inspired probabilistic approach
+* 🤖 LLM-based reasoning (Google Gemini)
+* 📊 Data analysis & visualization
+* 📄 Automated PDF report generation
+* 🌐 Interactive UI using Streamlit
+* 🔁 CI/CD using GitHub Actions
+
+The system operates in a **2D grid environment with obstacles**, finding optimal paths and comparing deterministic vs probabilistic decision-making.
 
 ---
 
 ## 🎯 Objectives
-- To implement classical path planning using the A* algorithm  
-- To explore quantum-inspired decision-making using simple quantum circuits  
-- To compare deterministic and probabilistic approaches  
-- To visualize and analyze path planning behavior  
+
+* Implement efficient path planning using **A***
+* Explore **quantum-inspired probabilistic navigation**
+* Compare both approaches using metrics
+* Integrate **LLM-based explanations**
+* Automate **analysis + reporting pipeline**
+* Deploy an **interactive UI for demonstration**
 
 ---
 
 ## 🧠 Classical Approach (A*)
 
-The A* algorithm is used as the baseline path planning method.
+* Uses heuristic-based search
+* Guarantees shortest path (if exists)
 
-### Key Concepts:
-- **g(n):** Cost from start node  
-- **h(n):** Heuristic (Manhattan distance)  
-- **f(n) = g(n) + h(n)**  
+### Formula:
 
-### Features:
-- Guaranteed shortest path (if exists)  
-- Efficient exploration using heuristic  
-- Tracks explored nodes and path  
+f(n) = g(n) + h(n)
+
+* g(n): Cost from start
+* h(n): Manhattan distance
 
 ---
 
 ## ⚛️ Quantum-Inspired Approach
 
-This module introduces a probabilistic method using a **Grover-inspired quantum circuit**.
-
-### Key Idea:
-- Classical logic determines best possible moves  
-- If multiple optimal moves exist → quantum circuit selects one  
+* Inspired by **Grover-like probabilistic selection**
+* Chooses among optimal moves randomly
 
 ### Characteristics:
-- Probabilistic decision-making  
-- No guarantee of optimal path  
-- Can behave differently across runs  
+
+* Probabilistic decisions
+* Non-deterministic output
+* Varies across runs
 
 ---
 
-## ⚖️ Classical vs Quantum Comparison
+## ⚖️ Comparison
 
-| Feature | A* | Quantum |
-|--------|----|--------|
-| Type | Deterministic | Probabilistic |
-| Path Optimality | Guaranteed | Not guaranteed |
-| Decision Making | Global | Local |
-| Reliability | High | Lower |
-
----
-
-## 📊 Experimentation
-
-Both approaches are tested across multiple runs with random obstacle configurations.
-
-### Metrics Collected:
-- Success rate  
-- Path length  
-- Number of explored nodes  
-
-Logs are generated as JSON files:
-- `astar_logs.json`  
-- `quantum_path_logs.json`  
+| Feature      | A*            | Quantum          |
+| ------------ | ------------- | ---------------- |
+| Type         | Deterministic | Probabilistic    |
+| Optimal Path | ✅ Guaranteed  | ❌ Not guaranteed |
+| Reliability  | High          | Medium           |
+| Behavior     | Consistent    | Variable         |
 
 ---
 
-## 📈 Visualization
+## 📊 System Architecture
 
-The system provides graphical output showing:
-
-- Black cells → Obstacles  
-- Light blue cells → Explored nodes  
-- Path → Final route  
-- S → Start  
-- G → Goal  
+```
+Quantum-ai-path-planning/
+│
+├── classical/                # A* Algorithm
+├── quantum/                  # Quantum-inspired logic
+├── LLM Explanation/          # AI + Analytics pipeline
+│   ├── app.py
+│   ├── metrics.py
+│   ├── visualization.py
+│   ├── llm_module.py
+│   ├── pdf_report.py
+│   └── requirements.txt
+│
+├── app_ui.py                 # Streamlit UI
+├── test_astar.py             # Unit tests
+├── .github/workflows/ci.yml  # CI/CD pipeline
+└── README.md
+```
 
 ---
 
-## 📁 Project Structure
+## ⚙️ Features
 
-    classical/                 # Classical A* module
-        astar.py
-        README.md
-        sample_output.png
+### ✅ Path Planning
 
-    quantum/                  # Quantum-inspired module
-        quantum_path.py
-        README.md
-        sample_output_quantum.png
+* A* shortest path algorithm
+* Quantum-inspired probabilistic navigation
+
+### 📊 Analytics
+
+* Success rate
+* Path length
+* Explored nodes
+
+### 🤖 AI Integration
+
+* LLM-based explanation using **Google Gemini**
+* Failure analysis & decision insights
+
+### 📈 Visualization
+
+* Graphs and comparison plots
+* Performance metrics
+
+### 📄 Reporting
+
+* Auto-generated **PDF report** with insights
+
+### 🌐 UI (Streamlit)
+
+* Interactive execution
+* Real-time algorithm demo
+
+### 🔁 CI/CD
+
+* Automated pipeline using GitHub Actions
+* Runs tests on every push
 
 ---
 
 ## ▶️ How to Run
 
-Install dependencies:
+### 🔹 1. Clone Repository
 
-    pip install numpy matplotlib qiskit qiskit-aer
-
-Run A*:
-
-    python classical/astar.py
-
-Run Quantum:
-
-    python quantum/quantum_path.py
+```
+git clone https://github.com/iamviplavkr/Quantum-ai-path-planning.git
+cd Quantum-ai-path-planning
+```
 
 ---
 
-## 🚀 Future Work
+### 🔹 2. Create Virtual Environment
 
-- Integrate LLM-based explanation module  
-- Add comparison visualizations (graphs, metrics)  
-- Implement Docker containerization  
-- Extend quantum logic for improved decision-making  
+```
+python -m venv venv
+venv\Scripts\activate
+```
+
+---
+
+### 🔹 3. Install Dependencies
+
+```
+pip install -r "LLM Explanation/requirements.txt"
+pip install streamlit matplotlib pytest
+```
+
+---
+
+### 🔹 4. Run Streamlit UI
+
+```
+python -m streamlit run app_ui.py
+```
+
+👉 Open in browser:
+http://localhost:8501
+
+---
+
+### 🔹 5. Run CI Tests Locally
+
+```
+pytest
+```
+
+---
+
+## 🔁 CI/CD Pipeline
+
+Implemented using **GitHub Actions**:
+
+* Installs dependencies
+* Runs algorithm validation
+* Executes tests automatically
+
+---
+
+## 📊 Output
+
+* Path visualization
+* Performance metrics
+* AI-generated insights
+* 📄 `Hybrid_AI_Report.pdf`
+
+---
+
+
+## 💡 Technologies Used
+
+* Python
+* NumPy, Pandas
+* Matplotlib, Seaborn
+* Streamlit
+* ReportLab
+* Google Gemini API
+* GitHub Actions (CI/CD)
+
+---
+
+## 🔮 Future Improvements
+
+* Docker containerization
+* Microservices architecture
+* Advanced quantum algorithms
+* Real-time simulation dashboard
+* Cloud deployment (AWS/Azure)
 
 ---
 
 ## 👨‍💻 Authors
 
-Anant Jain  
-Viplav Kumar  
-Ehsaas Bhalla  
+* Viplav Kumar
+* Anant Jain
+* Ehsaas Bhalla
 
 ---
 
-## 📧 Contact
+## 📌 Conclusion
 
-For any queries or collaboration:
+This project demonstrates how **classical algorithms, quantum-inspired logic, and modern AI (LLMs)** can be integrated into a unified system for intelligent, explainable, and scalable path planning.
 
-anant.inf.12.28@gmail.com
+---
