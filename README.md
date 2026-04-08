@@ -219,9 +219,9 @@ Implemented using **GitHub Actions**:
 
 ## 👨‍💻 Authors
 
-* Viplav Kumar
 * Anant Jain
 * Ehsaas Bhalla
+* Viplav Kumar
 
 ---
 
@@ -230,3 +230,8 @@ Implemented using **GitHub Actions**:
 This project demonstrates how **classical algorithms, quantum-inspired logic, and modern AI (LLMs)** can be integrated into a unified system for intelligent, explainable, and scalable path planning.
 
 ---
+
+## 📫 Contact
+
+For academic discussion or collaboration, please reach out via **anant.inf.12.28@gmail.com**.
+
